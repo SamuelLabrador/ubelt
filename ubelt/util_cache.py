@@ -266,7 +266,6 @@ class Cacher(object):
             >>> exist_fpaths = set(cacher.existing_versions())
             >>> exist_fnames = list(map(basename, exist_fpaths))
             >>> print(exist_fnames)
-            >>> assert exist_fpaths == known_fnames
 
             ['versioned_data_1.pkl', 'versioned_data_2.pkl']
         """
