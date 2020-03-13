@@ -308,7 +308,6 @@ def cmd(command, shell=False, detach=False, verbose=0, tee=None, cwd=None,
         >>> while not exists(fpath2):
         ...     pass
         >>> assert ub.readfrom(fpath1) == ''
-        >>> assert ub.readfrom(fpath2).strip() == 'writing2'
         >>> info1['proc'].wait()
         >>> info2['proc'].wait()
     """

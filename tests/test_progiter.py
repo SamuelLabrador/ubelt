@@ -262,11 +262,16 @@ def time_progiter_overhead():
         prog.set_extra(key)
         secs = timeit.timeit(stmt.format(work=work), setup, number=number)
         timeings[key] = secs / number
-
+ 
     # import utool as ut
     # print(ut.align(ut.repr4(timeings, precision=8), ':'))
 
-def test_reseet():
+def test_reset():
+    import ubelt as ub
+    prog = ub.ProgIter()
+
+    prog._reset_internals()
+    assert prog._last_idx == -1
     pass
 
 def test_unknown_total():
