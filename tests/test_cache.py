@@ -145,11 +145,15 @@ def test_disable():
 
     assert cacher.tryload(func) is None
 
-
+ 
 def test_disabled_cache_stamp():
     stamp = ub.CacheStamp('foo', 'bar', enabled=False)
     assert stamp.expired() is True, 'disabled cache stamps are always expired'
 
+def test_rectify_cfgstr():
+    c = ub.Cacher('test_file.txt')
+    c.enabled = True
+    assert c._rectify_cfgstr('test_file') == 'test_file'
 
 if __name__ == '__main__':
     r"""
@@ -158,3 +162,4 @@ if __name__ == '__main__':
     """
     import xdoctest
     xdoctest.doctest_module(__file__)
+
