@@ -150,6 +150,7 @@ def test_disabled_cache_stamp():
     stamp = ub.CacheStamp('foo', 'bar', enabled=False)
     assert stamp.expired() is True, 'disabled cache stamps are always expired'
 
+# Test for proper return value
 def test_rectify_cfgstr():
     c = ub.Cacher('test_file.txt')
     c.enabled = True

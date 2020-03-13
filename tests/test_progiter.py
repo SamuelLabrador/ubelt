@@ -6,6 +6,7 @@ from six.moves import cStringIO
 from xdoctest.utils import strip_ansi
 from ubelt.progiter import ProgIter
 import sys
+import io
 
 
 def test_rate_format_string():
@@ -287,6 +288,7 @@ def test_initial():
     """
     Make sure a question mark is printed if the total is unknown
     """
+    assert ProgIter().iterable == None
     file = cStringIO()
     prog = ProgIter(initial=9001, file=file, show_times=False, clearline=False)
     message = prog.format_message()
@@ -310,7 +312,6 @@ def test_clearline():
     message = prog.format_message()
     assert strip_ansi(message).strip(' ') == '\r    0/?...'
 
-
 def test_disabled():
     prog = ProgIter(range(20), enabled=True)
     prog.begin()
@@ -328,6 +329,11 @@ def test_eta_window_None():
     for _ in prog:
         pass
 
+def test_progiter_stream():
+    b = io.BytesIO()
+    buff = b.getbuffer()
+
+    prog = ProgIter()
 
 def test_adjust_freq():
     # nothing to check (that I can think of) run test for coverage
@@ -365,6 +371,7 @@ def test_adjust_freq():
 
 
 def test_tqdm_compatibility():
+
     prog = ProgIter(range(20), total=20, miniters=17, show_times=False)
     assert prog.pos == 0
     assert prog.freq == 17

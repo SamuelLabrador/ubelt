@@ -206,6 +206,8 @@ class memoize_method(object):
         else:
             self.__func__ = func
 
+    # ISSUE. cls IS UNUSED IN FUNCTION. 
+    # RECOMMEND ADDING AN ASSERTION METHOD.
     def __get__(self, instance, cls=None):
         """
         Descriptor get method. Called when the decorated method is accessed

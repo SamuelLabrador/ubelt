@@ -61,7 +61,10 @@ def test_ensuredir_recreate():
     ub.ensuredir(folder, recreate=True)
     ub.ensuredir(member)
     assert exists(member)
-    ub.ensuredir(folder, recreate=True)
+    with ub.CaptureStdout() as cap:
+        ub.ensuredir(folder, recreate=True, verbose=True)
+    assert cap.text != ''
+
     assert not exists(member)
 
 
