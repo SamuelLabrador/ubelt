@@ -127,25 +127,25 @@ def test_remove_error():
 def test_discard():
     set1 = OrderedSet('abracadabra')
 
-    set1.discard('a')
-    set1.discard('b')
+    set1.discard('r')
+    set1.discard('c')
 
-    assert set1 == OrderedSet('rcd')
-    assert set1[0] == 'r'
-    assert set1[1] == 'c'
+    assert set1 == OrderedSet('abd')
+    assert set1[0] == 'a'
+    assert set1[1] == 'b'
     assert set1[2] == 'd'
 
-    assert set1.index('r') == 0
-    assert set1.index('c') == 1
+    assert set1.index('a') == 0
+    assert set1.index('b') == 1
     assert set1.index('d') == 2
 
-    assert 'a' not in set1
-    assert 'b' not in set1
-    assert 'r' in set1
+    assert 'c' not in set1
+    assert 'd' not in set1
+    assert 'a' in set1
 
     # Make sure we can .discard() something that's already gone, plus
     # something that was never there
-    set1.discard('a')
+    set1.discard('r')
     set1.discard('z')
 
 
