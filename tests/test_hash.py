@@ -340,3 +340,17 @@ if __name__ == '__main__':
     """
     import xdoctest
     xdoctest.doctest_module(__file__)
+
+def _test_rectify_hasher_default():
+    try:
+        hasher = _rectify_hasher(NoParam)
+    except KeyError:
+            self.fail('Expected hasher {}. Got unknown hasher: {}'.format(DEFAULT_HASHER, hasher))
+    else:
+        assert hasher == DEFAULT_HASHER
+    try:
+        hasher = _rectify_hasher('default')
+    except KeyError:
+        self.fail('Expected hasher {}. Got unknown hasher: {}'.format(DEFAULT_HASHER, hasher))
+    else:
+        assert hasher == DEFAULT_HASHER

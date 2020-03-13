@@ -124,6 +124,31 @@ def test_remove_error():
         set1.remove('z')
 
 
+def test_discard():
+    set1 = OrderedSet('abracadabra')
+
+    set1.discard('a')
+    set1.discard('b')
+
+    assert set1 == OrderedSet('rcd')
+    assert set1[0] == 'r'
+    assert set1[1] == 'c'
+    assert set1[2] == 'd'
+
+    assert set1.index('r') == 0
+    assert set1.index('c') == 1
+    assert set1.index('d') == 2
+
+    assert 'a' not in set1
+    assert 'b' not in set1
+    assert 'r' in set1
+
+    # Make sure we can .discard() something that's already gone, plus
+    # something that was never there
+    set1.discard('a')
+    set1.discard('z')
+
+
 def test_clear():
     set1 = OrderedSet('abracadabra')
     set1.clear()
