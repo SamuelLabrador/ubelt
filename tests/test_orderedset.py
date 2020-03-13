@@ -186,8 +186,12 @@ def test_pop():
 
 def test_getitem_type_error():
     set1 = OrderedSet('ab')
-    with pytest.raises(TypeError):
+    try:
         set1['a']
+    except TypeError:
+        pass
+    else:
+        self.fail('set1[\'a\'] did not raise TypeError, expected integer')
 
 
 def test_update_value_error():
