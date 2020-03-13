@@ -268,10 +268,15 @@ def test_hash_file():
     hashid1_b = ub.hash_file(fpath, hasher='sha512', hashlen=8, stride=1, blocksize=10)
     hashid2_b = ub.hash_file(fpath, hasher='sha512', hashlen=8, stride=2, blocksize=10)
 
+    hashid1_c = ub.hash_file(fpath, hasher='sha512', hashlen=16, stride=1, blocksize=2)
+    hashid2_c = ub.hash_file(fpath, hasher='sha512', hashlen=16, stride=10, blocksize=2)
+    
     assert hashid1_a == hashid1_b
     assert hashid2_a != hashid2_b, 'blocksize matters when stride is > 1'
     assert hashid1_a != hashid2_a
 
+    assert hashid1_c != hashid2_c
+    assert hashid1_c != hashid2_a
 
 def test_convert_base_hex():
     # Test that hex values are unchanged

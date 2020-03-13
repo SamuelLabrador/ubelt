@@ -140,7 +140,7 @@ def test_discard():
     assert set1.index('d') == 2
 
     assert 'c' not in set1
-    assert 'd' not in set1
+    assert 'r' not in set1
     assert 'a' in set1
 
     # Make sure we can .discard() something that's already gone, plus

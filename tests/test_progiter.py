@@ -266,6 +266,8 @@ def time_progiter_overhead():
     # import utool as ut
     # print(ut.align(ut.repr4(timeings, precision=8), ':'))
 
+def test_reseet():
+    pass
 
 def test_unknown_total():
     """
